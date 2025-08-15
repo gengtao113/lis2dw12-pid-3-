@@ -94,54 +94,172 @@ int32_t __weak lis2dw12_write_reg(const stmdev_ctx_t *ctx, uint8_t reg,
 
 /**
   * @defgroup    LIS2DW12_Sensitivity
-  * @brief       These functions convert raw-data into engineering units.
+  * @brief       这些函数将原始数据转换为工程单位。
   * @{
   *
   */
 
+/**
+ * @brief 将±2g满量程范围的原始数据转换为毫克单位
+ * 
+ * 该函数将LIS2DW12加速度传感器在±2g满量程范围下的原始LSB值转换为毫克(mg)单位。
+ * 转换系数为0.061 mg/LSB，适用于高性能模式和低功耗模式。
+ * 
+ * @param lsb 原始LSB值，16位有符号整数
+ * @return 转换后的加速度值，单位为毫克(mg)
+ * 
+ * @note 该函数适用于所有工作模式下的±2g量程范围
+ * @note 转换精度：0.061 mg/LSB
+ * @note 测量范围：±2g (±2000 mg)
+ */
 float_t lis2dw12_from_fs2_to_mg(int16_t lsb)
 {
-  return ((float_t)lsb) * 0.061f;
+  return ((float_t)lsb) * 0.061f;  /**< 将LSB值乘以转换系数0.061 mg/LSB */
 }
 
+/**
+ * @brief 将±4g满量程范围的原始数据转换为毫克单位
+ * 
+ * 该函数将LIS2DW12加速度传感器在±4g满量程范围下的原始LSB值转换为毫克(mg)单位。
+ * 转换系数为0.122 mg/LSB，适用于高性能模式和低功耗模式。
+ * 
+ * @param lsb 原始LSB值，16位有符号整数
+ * @return 转换后的加速度值，单位为毫克(mg)
+ * 
+ * @note 该函数适用于所有工作模式下的±4g量程范围
+ * @note 转换精度：0.122 mg/LSB
+ * @note 测量范围：±4g (±4000 mg)
+ */
 float_t lis2dw12_from_fs4_to_mg(int16_t lsb)
 {
-  return ((float_t)lsb) * 0.122f;
+  return ((float_t)lsb) * 0.122f;  /**< 将LSB值乘以转换系数0.122 mg/LSB */
 }
 
+/**
+ * @brief 将±8g满量程范围的原始数据转换为毫克单位
+ * 
+ * 该函数将LIS2DW12加速度传感器在±8g满量程范围下的原始LSB值转换为毫克(mg)单位。
+ * 转换系数为0.244 mg/LSB，适用于高性能模式和低功耗模式。
+ * 
+ * @param lsb 原始LSB值，16位有符号整数
+ * @return 转换后的加速度值，单位为毫克(mg)
+ * 
+ * @note 该函数适用于所有工作模式下的±8g量程范围
+ * @note 转换精度：0.244 mg/LSB
+ * @note 测量范围：±8g (±8000 mg)
+ */
 float_t lis2dw12_from_fs8_to_mg(int16_t lsb)
 {
-  return ((float_t)lsb) * 0.244f;
+  return ((float_t)lsb) * 0.244f;  /**< 将LSB值乘以转换系数0.244 mg/LSB */
 }
 
+/**
+ * @brief 将±16g满量程范围的原始数据转换为毫克单位
+ * 
+ * 该函数将LIS2DW12加速度传感器在±16g满量程范围下的原始LSB值转换为毫克(mg)单位。
+ * 转换系数为0.488 mg/LSB，适用于高性能模式和低功耗模式。
+ * 
+ * @param lsb 原始LSB值，16位有符号整数
+ * @return 转换后的加速度值，单位为毫克(mg)
+ * 
+ * @note 该函数适用于所有工作模式下的±16g量程范围
+ * @note 转换精度：0.488 mg/LSB
+ * @note 测量范围：±16g (±16000 mg)
+ */
 float_t lis2dw12_from_fs16_to_mg(int16_t lsb)
 {
-  return ((float_t)lsb) * 0.488f;
+  return ((float_t)lsb) * 0.488f;  /**< 将LSB值乘以转换系数0.488 mg/LSB */
 }
 
+/**
+ * @brief 将±2g满量程范围低功耗模式1的原始数据转换为毫克单位
+ * 
+ * 该函数将LIS2DW12加速度传感器在±2g满量程范围低功耗模式1下的原始LSB值转换为毫克(mg)单位。
+ * 转换系数为0.061 mg/LSB，专门用于低功耗模式1。
+ * 
+ * @param lsb 原始LSB值，16位有符号整数
+ * @return 转换后的加速度值，单位为毫克(mg)
+ * 
+ * @note 该函数专门用于低功耗模式1下的±2g量程范围
+ * @note 转换精度：0.061 mg/LSB
+ * @note 测量范围：±2g (±2000 mg)
+ */
 float_t lis2dw12_from_fs2_lp1_to_mg(int16_t lsb)
 {
-  return ((float_t)lsb) * 0.061f;
+  return ((float_t)lsb) * 0.061f;  /**< 将LSB值乘以转换系数0.061 mg/LSB */
 }
 
+/**
+ * @brief 将±4g满量程范围低功耗模式1的原始数据转换为毫克单位
+ * 
+ * 该函数将LIS2DW12加速度传感器在±4g满量程范围低功耗模式1下的原始LSB值转换为毫克(mg)单位。
+ * 转换系数为0.122 mg/LSB，专门用于低功耗模式1。
+ * 
+ * @param lsb 原始LSB值，16位有符号整数
+ * @return 转换后的加速度值，单位为毫克(mg)
+ * 
+ * @note 该函数专门用于低功耗模式1下的±4g量程范围
+ * @note 转换精度：0.122 mg/LSB
+ * @note 测量范围：±4g (±4000 mg)
+ */
 float_t lis2dw12_from_fs4_lp1_to_mg(int16_t lsb)
 {
-  return ((float_t)lsb) * 0.122f;
+  return ((float_t)lsb) * 0.122f;  /**< 将LSB值乘以转换系数0.122 mg/LSB */
 }
 
+/**
+ * @brief 将±8g满量程范围低功耗模式1的原始数据转换为毫克单位
+ * 
+ * 该函数将LIS2DW12加速度传感器在±8g满量程范围低功耗模式1下的原始LSB值转换为毫克(mg)单位。
+ * 转换系数为0.244 mg/LSB，专门用于低功耗模式1。
+ * 
+ * @param lsb 原始LSB值，16位有符号整数
+ * @return 转换后的加速度值，单位为毫克(mg)
+ * 
+ * @note 该函数专门用于低功耗模式1下的±8g量程范围
+ * @note 转换精度：0.244 mg/LSB
+ * @note 测量范围：±8g (±8000 mg)
+ */
 float_t lis2dw12_from_fs8_lp1_to_mg(int16_t lsb)
 {
-  return ((float_t)lsb) * 0.244f;
+  return ((float_t)lsb) * 0.244f;  /**< 将LSB值乘以转换系数0.244 mg/LSB */
 }
 
+/**
+ * @brief 将±16g满量程范围低功耗模式1的原始数据转换为毫克单位
+ * 
+ * 该函数将LIS2DW12加速度传感器在±16g满量程范围低功耗模式1下的原始LSB值转换为毫克(mg)单位。
+ * 转换系数为0.488 mg/LSB，专门用于低功耗模式1。
+ * 
+ * @param lsb 原始LSB值，16位有符号整数
+ * @return 转换后的加速度值，单位为毫克(mg)
+ * 
+ * @note 该函数专门用于低功耗模式1下的±16g量程范围
+ * @note 转换精度：0.488 mg/LSB
+ * @note 测量范围：±16g (±16000 mg)
+ */
 float_t lis2dw12_from_fs16_lp1_to_mg(int16_t lsb)
 {
-  return ((float_t)lsb) * 0.488f;
+  return ((float_t)lsb) * 0.488f;  /**< 将LSB值乘以转换系数0.488 mg/LSB */
 }
 
+/**
+ * @brief 将温度传感器的原始数据转换为摄氏度
+ * 
+ * 该函数将LIS2DW12加速度传感器内置温度传感器的原始LSB值转换为摄氏度。
+ * 转换公式：温度(°C) = (LSB / 256.0) + 25.0
+ * 
+ * @param lsb 温度传感器的原始LSB值，16位有符号整数
+ * @return 转换后的温度值，单位为摄氏度(°C)
+ * 
+ * @note 温度传感器分辨率：1 LSB = 1/256 °C
+ * @note 参考温度：25°C (LSB = 0时的温度)
+ * @note 温度范围：-40°C 到 +85°C
+ * @note 温度精度：±2°C
+ */
 float_t lis2dw12_from_lsb_to_celsius(int16_t lsb)
 {
-  return (((float_t)lsb / 256.0f) + 25.0f);
+  return (((float_t)lsb / 256.0f) + 25.0f);  /**< 将LSB值除以256并加上25°C的偏移 */
 }
 
 /**
@@ -158,567 +276,805 @@ float_t lis2dw12_from_lsb_to_celsius(int16_t lsb)
   */
 
 /**
-  * @brief  Select accelerometer operating modes.[set]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  val      change the values of mode / lp_mode in reg CTRL1
-  *                  and low_noise in reg CTRL6
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 设置加速度传感器工作模式
+ *
+ * 该函数用于配置LIS2DW12加速度传感器的工作模式，包括基本工作模式、低功耗模式和低噪声模式。
+ * 函数会同时修改CTRL1寄存器的mode和lp_mode位，以及CTRL6寄存器的low_noise位。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param val 工作模式枚举值，包含mode、lp_mode和low_noise的组合配置
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 该函数会分两步配置：先配置CTRL1寄存器，再配置CTRL6寄存器
+ * @note 如果任何一步失败，函数会立即返回错误状态
+ * @note val参数的低2位用于lp_mode，位2-3用于mode，位4用于low_noise
+ */
 int32_t lis2dw12_power_mode_set(const stmdev_ctx_t *ctx,
                                 lis2dw12_mode_t val)
 {
-  lis2dw12_ctrl1_t ctrl1;
-  lis2dw12_ctrl6_t ctrl6;
-  int32_t ret;
+  lis2dw12_ctrl1_t ctrl1;  /**< CTRL1寄存器结构体，用于配置基本工作模式和低功耗模式 */
+  lis2dw12_ctrl6_t ctrl6;  /**< CTRL6寄存器结构体，用于配置低噪声模式 */
+  int32_t ret;             /**< 函数返回值，用于错误处理 */
 
+  /** 读取CTRL1寄存器的当前值到ctrl1结构体 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL1, (uint8_t *) &ctrl1, 1);
 
+  /** 如果读取成功，则配置CTRL1寄存器 */
   if (ret == 0)
   {
+    /** 提取mode位：将val的位2-3右移2位得到mode值 (0x0C = 0b1100) */
     ctrl1.mode = ((uint8_t) val & 0x0CU) >> 2;
+    /** 提取lp_mode位：取val的低2位 (0x03 = 0b0011) */
     ctrl1.lp_mode = (uint8_t) val & 0x03U ;
+    /** 将配置写入CTRL1寄存器 */
     ret = lis2dw12_write_reg(ctx, LIS2DW12_CTRL1, (uint8_t *) &ctrl1, 1);
   }
 
+  /** 如果CTRL1配置成功，则读取CTRL6寄存器 */
   if (ret == 0)
   {
+    /** 读取CTRL6寄存器的当前值到ctrl6结构体 */
     ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL6, (uint8_t *) &ctrl6, 1);
   }
 
+  /** 如果读取CTRL6成功，则配置CTRL6寄存器 */
   if (ret == 0)
   {
+    /** 提取low_noise位：将val的位4右移4位得到low_noise值 (0x10 = 0b10000) */
     ctrl6.low_noise = ((uint8_t) val & 0x10U) >> 4;
+    /** 将配置写入CTRL6寄存器 */
     ret = lis2dw12_write_reg(ctx, LIS2DW12_CTRL6, (uint8_t *) &ctrl6, 1);
   }
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Select accelerometer operating modes.[get]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  val      change the values of mode / lp_mode in reg CTRL1
-  *                  and low_noise in reg CTRL6
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 获取加速度传感器工作模式
+ *
+ * 该函数用于读取LIS2DW12加速度传感器的当前工作模式配置。
+ * 函数会读取CTRL1寄存器的mode和lp_mode位，以及CTRL6寄存器的low_noise位，
+ * 然后根据这些位的组合值确定当前的工作模式。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param val 输出参数，用于存储当前工作模式枚举值
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 该函数会读取两个寄存器：CTRL1和CTRL6
+ * @note 如果读取失败，val参数不会被修改
+ * @note 如果读取到的组合值不在预定义范围内，会默认返回HIGH_PERFORMANCE模式
+ */
 int32_t lis2dw12_power_mode_get(const stmdev_ctx_t *ctx,
                                 lis2dw12_mode_t *val)
 {
-  lis2dw12_ctrl1_t ctrl1;
-  lis2dw12_ctrl6_t ctrl6;
-  int32_t ret;
+  lis2dw12_ctrl1_t ctrl1;  /**< CTRL1寄存器结构体，用于存储mode和lp_mode位 */
+  lis2dw12_ctrl6_t ctrl6;  /**< CTRL6寄存器结构体，用于存储low_noise位 */
+  int32_t ret;             /**< 函数返回值，用于错误处理 */
 
+  /** 读取CTRL1寄存器的当前值到ctrl1结构体 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL1, (uint8_t *) &ctrl1, 1);
 
+  /** 如果CTRL1读取成功，则继续读取CTRL6寄存器 */
   if (ret == 0)
   {
+    /** 读取CTRL6寄存器的当前值到ctrl6结构体 */
     ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL6, (uint8_t *) &ctrl6, 1);
 
+    /** 根据寄存器位的组合值确定工作模式 */
+    /** 组合算法：low_noise左移4位 + mode左移2位 + lp_mode */
+    /** 这与lis2dw12_power_mode_set函数中的位操作相对应 */
     switch (((ctrl6.low_noise << 4) + (ctrl1.mode << 2) +
              ctrl1.lp_mode))
     {
+      /** 高性能模式：正常功耗，标准噪声水平 */
       case LIS2DW12_HIGH_PERFORMANCE:
         *val = LIS2DW12_HIGH_PERFORMANCE;
         break;
 
+      /** 连续低功耗模式4：连续采样，低功耗，14位分辨率 */
       case LIS2DW12_CONT_LOW_PWR_4:
         *val = LIS2DW12_CONT_LOW_PWR_4;
         break;
 
+      /** 连续低功耗模式3：连续采样，低功耗，14位分辨率 */
       case LIS2DW12_CONT_LOW_PWR_3:
         *val = LIS2DW12_CONT_LOW_PWR_3;
         break;
 
+      /** 连续低功耗模式2：连续采样，低功耗，14位分辨率 */
       case LIS2DW12_CONT_LOW_PWR_2:
         *val = LIS2DW12_CONT_LOW_PWR_2;
         break;
 
+      /** 连续低功耗模式12位：连续采样，低功耗，12位分辨率 */
       case LIS2DW12_CONT_LOW_PWR_12bit:
         *val = LIS2DW12_CONT_LOW_PWR_12bit;
         break;
 
+      /** 单次低功耗模式4：单次采样，低功耗，14位分辨率 */
       case LIS2DW12_SINGLE_LOW_PWR_4:
         *val = LIS2DW12_SINGLE_LOW_PWR_4;
         break;
 
+      /** 单次低功耗模式3：单次采样，低功耗，14位分辨率 */
       case LIS2DW12_SINGLE_LOW_PWR_3:
         *val = LIS2DW12_SINGLE_LOW_PWR_3;
         break;
 
+      /** 单次低功耗模式2：单次采样，低功耗，14位分辨率 */
       case LIS2DW12_SINGLE_LOW_PWR_2:
         *val = LIS2DW12_SINGLE_LOW_PWR_2;
         break;
 
+      /** 单次低功耗模式12位：单次采样，低功耗，12位分辨率 */
       case LIS2DW12_SINGLE_LOW_PWR_12bit:
         *val = LIS2DW12_SINGLE_LOW_PWR_12bit;
         break;
 
+      /** 高性能低噪声模式：正常功耗，低噪声水平 */
       case LIS2DW12_HIGH_PERFORMANCE_LOW_NOISE:
         *val = LIS2DW12_HIGH_PERFORMANCE_LOW_NOISE;
         break;
 
+      /** 连续低功耗低噪声模式4：连续采样，低功耗，低噪声，14位分辨率 */
       case LIS2DW12_CONT_LOW_PWR_LOW_NOISE_4:
         *val = LIS2DW12_CONT_LOW_PWR_LOW_NOISE_4;
         break;
 
+      /** 连续低功耗低噪声模式3：连续采样，低功耗，低噪声，14位分辨率 */
       case LIS2DW12_CONT_LOW_PWR_LOW_NOISE_3:
         *val = LIS2DW12_CONT_LOW_PWR_LOW_NOISE_3;
         break;
 
+      /** 连续低功耗低噪声模式2：连续采样，低功耗，低噪声，14位分辨率 */
       case LIS2DW12_CONT_LOW_PWR_LOW_NOISE_2:
         *val = LIS2DW12_CONT_LOW_PWR_LOW_NOISE_2;
         break;
 
+      /** 连续低功耗低噪声模式12位：连续采样，低功耗，低噪声，12位分辨率 */
       case LIS2DW12_CONT_LOW_PWR_LOW_NOISE_12bit:
         *val = LIS2DW12_CONT_LOW_PWR_LOW_NOISE_12bit;
         break;
 
+      /** 单次低功耗低噪声模式4：单次采样，低功耗，低噪声，14位分辨率 */
       case LIS2DW12_SINGLE_LOW_PWR_LOW_NOISE_4:
         *val = LIS2DW12_SINGLE_LOW_PWR_LOW_NOISE_4;
         break;
 
+      /** 单次低功耗低噪声模式3：单次采样，低功耗，低噪声，14位分辨率 */
       case LIS2DW12_SINGLE_LOW_PWR_LOW_NOISE_3:
         *val = LIS2DW12_SINGLE_LOW_PWR_LOW_NOISE_3;
         break;
 
+      /** 单次低功耗低噪声模式2：单次采样，低功耗，低噪声，14位分辨率 */
       case LIS2DW12_SINGLE_LOW_PWR_LOW_NOISE_2:
         *val = LIS2DW12_SINGLE_LOW_PWR_LOW_NOISE_2;
         break;
 
+      /** 单次低功耗低噪声模式12位：单次采样，低功耗，低噪声，12位分辨率 */
       case LIS2DW12_SINGLE_LOW_LOW_NOISE_PWR_12bit:
         *val = LIS2DW12_SINGLE_LOW_LOW_NOISE_PWR_12bit;
         break;
 
+      /** 默认情况：如果组合值不在预定义范围内，返回高性能模式 */
       default:
         *val = LIS2DW12_HIGH_PERFORMANCE;
         break;
     }
   }
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Accelerometer data rate selection.[set]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  val      change the values of odr in reg CTRL1
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 设置加速度传感器数据输出速率
+ *
+ * 该函数用于配置LIS2DW12加速度传感器的数据输出速率(ODR)和睡眠模式。
+ * 函数会同时修改CTRL1寄存器的odr位和CTRL3寄存器的slp_mode位。
+ * 数据输出速率决定了传感器的采样频率，影响功耗和响应速度。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param val 数据输出速率枚举值，包含odr和slp_mode的组合配置
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 该函数会分两步配置：先配置CTRL1寄存器的odr位，再配置CTRL3寄存器的slp_mode位
+ * @note 如果任何一步失败，函数会立即返回错误状态
+ * @note val参数的低4位用于odr，位4-5用于slp_mode
+ * @note 支持的数据速率：关闭、1.6Hz(仅低功耗)、12.5Hz、25Hz、50Hz、100Hz、200Hz、400Hz、800Hz、1.6kHz
+ */
 int32_t lis2dw12_data_rate_set(const stmdev_ctx_t *ctx, lis2dw12_odr_t val)
 {
-  lis2dw12_ctrl1_t ctrl1;
-  lis2dw12_ctrl3_t ctrl3;
-  int32_t ret;
+  lis2dw12_ctrl1_t ctrl1;  /**< CTRL1寄存器结构体，用于配置数据输出速率 */
+  lis2dw12_ctrl3_t ctrl3;  /**< CTRL3寄存器结构体，用于配置睡眠模式 */
+  int32_t ret;             /**< 函数返回值，用于错误处理 */
 
+  /** 读取CTRL1寄存器的当前值到ctrl1结构体 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL1, (uint8_t *) &ctrl1, 1);
 
+  /** 如果CTRL1读取成功，则配置数据输出速率 */
   if (ret == 0)
   {
+    /** 提取odr位：取val的低4位作为数据输出速率值 */
     ctrl1.odr = (uint8_t) val;
+    /** 将配置写入CTRL1寄存器 */
     ret = lis2dw12_write_reg(ctx, LIS2DW12_CTRL1, (uint8_t *) &ctrl1, 1);
   }
 
+  /** 如果CTRL1配置成功，则读取CTRL3寄存器 */
   if (ret == 0)
   {
+    /** 读取CTRL3寄存器的当前值到ctrl3结构体 */
     ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL3, (uint8_t *) &ctrl3, 1);
   }
 
+  /** 如果CTRL3读取成功，则配置睡眠模式 */
   if (ret == 0)
   {
+    /** 提取slp_mode位：将val的位4-5右移4位得到睡眠模式值 (0x30 = 0b110000) */
     ctrl3.slp_mode = ((uint8_t) val & 0x30U) >> 4;
+    /** 将配置写入CTRL3寄存器 */
     ret = lis2dw12_write_reg(ctx, LIS2DW12_CTRL3, (uint8_t *) &ctrl3, 1);
   }
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Accelerometer data rate selection.[get]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  val      Get the values of odr in reg CTRL1
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 获取加速度传感器数据输出速率
+ *
+ * 该函数用于读取LIS2DW12加速度传感器的当前数据输出速率(ODR)和睡眠模式配置。
+ * 函数会读取CTRL1寄存器的odr位和CTRL3寄存器的slp_mode位，
+ * 然后根据这些位的组合值确定当前的数据输出速率配置。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param val 输出参数，用于存储当前数据输出速率枚举值
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 该函数会读取两个寄存器：CTRL1和CTRL3
+ * @note 如果读取失败，val参数不会被修改
+ * @note 组合算法：slp_mode左移4位 + odr，这与lis2dw12_data_rate_set函数中的位操作相对应
+ */
 int32_t lis2dw12_data_rate_get(const stmdev_ctx_t *ctx, lis2dw12_odr_t *val)
 {
-  lis2dw12_ctrl1_t ctrl1;
-  lis2dw12_ctrl3_t ctrl3;
-  int32_t ret;
+  lis2dw12_ctrl1_t ctrl1;  /**< CTRL1寄存器结构体，用于存储odr位 */
+  lis2dw12_ctrl3_t ctrl3;  /**< CTRL3寄存器结构体，用于存储slp_mode位 */
+  int32_t ret;             /**< 函数返回值，用于错误处理 */
 
+  /** 读取CTRL1寄存器的当前值到ctrl1结构体 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL1, (uint8_t *) &ctrl1, 1);
 
+  /** 如果CTRL1读取成功，则继续读取CTRL3寄存器 */
   if (ret == 0)
   {
+    /** 读取CTRL3寄存器的当前值到ctrl3结构体 */
     ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL3, (uint8_t *) &ctrl3, 1);
 
+    /** 根据寄存器位的组合值确定数据输出速率 */
+    /** 组合算法：slp_mode左移4位 + odr */
+    /** 这与lis2dw12_data_rate_set函数中的位操作相对应 */
     switch ((ctrl3.slp_mode << 4) + ctrl1.odr)
     {
+      /** 关闭模式：传感器停止工作，功耗最低 */
       case LIS2DW12_XL_ODR_OFF:
         *val = LIS2DW12_XL_ODR_OFF;
         break;
 
+      /** 1.6Hz低功耗模式：仅支持低功耗模式，1.6Hz采样率 */
       case LIS2DW12_XL_ODR_1Hz6_LP_ONLY:
         *val = LIS2DW12_XL_ODR_1Hz6_LP_ONLY;
         break;
 
+      /** 12.5Hz模式：12.5Hz采样率，平衡功耗和响应速度 */
       case LIS2DW12_XL_ODR_12Hz5:
         *val = LIS2DW12_XL_ODR_12Hz5;
         break;
 
+      /** 25Hz模式：25Hz采样率，适用于一般应用 */
       case LIS2DW12_XL_ODR_25Hz:
         *val = LIS2DW12_XL_ODR_25Hz;
         break;
 
+      /** 50Hz模式：50Hz采样率，适用于需要较快响应的应用 */
       case LIS2DW12_XL_ODR_50Hz:
         *val = LIS2DW12_XL_ODR_50Hz;
         break;
 
+      /** 100Hz模式：100Hz采样率，适用于高动态应用 */
       case LIS2DW12_XL_ODR_100Hz:
         *val = LIS2DW12_XL_ODR_100Hz;
         break;
 
+      /** 200Hz模式：200Hz采样率，适用于高速数据采集 */
       case LIS2DW12_XL_ODR_200Hz:
         *val = LIS2DW12_XL_ODR_200Hz;
         break;
 
+      /** 400Hz模式：400Hz采样率，适用于高频振动检测 */
       case LIS2DW12_XL_ODR_400Hz:
         *val = LIS2DW12_XL_ODR_400Hz;
         break;
 
+      /** 800Hz模式：800Hz采样率，适用于高速运动检测 */
       case LIS2DW12_XL_ODR_800Hz:
         *val = LIS2DW12_XL_ODR_800Hz;
         break;
 
+      /** 1.6kHz模式：1.6kHz采样率，最高采样频率，适用于精密测量 */
       case LIS2DW12_XL_ODR_1k6Hz:
         *val = LIS2DW12_XL_ODR_1k6Hz;
         break;
 
+      /** 软件触发模式：通过软件命令触发单次测量 */
       case LIS2DW12_XL_SET_SW_TRIG:
         *val = LIS2DW12_XL_SET_SW_TRIG;
         break;
 
+      /** 引脚触发模式：通过外部引脚触发单次测量 */
       case LIS2DW12_XL_SET_PIN_TRIG:
         *val = LIS2DW12_XL_SET_PIN_TRIG;
         break;
 
+      /** 默认情况：如果组合值不在预定义范围内，返回关闭模式 */
       default:
         *val = LIS2DW12_XL_ODR_OFF;
         break;
     }
   }
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Block data update.[set]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  val      change the values of bdu in reg CTRL2
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 设置块数据更新模式
+ *
+ * 该函数用于配置LIS2DW12加速度传感器的块数据更新(BDU)功能。
+ * BDU功能确保在读取多字节数据时，数据的一致性得到保证。
+ * 当BDU启用时，输出寄存器中的数据在完全更新之前不会被覆盖。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param val BDU模式设置：0=禁用，1=启用
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 当BDU启用时，确保读取的数据来自同一次测量
+ * @note 当BDU禁用时，可能在读取过程中数据被更新，导致数据不一致
+ * @note 建议在读取多字节数据时启用BDU功能
+ */
 int32_t lis2dw12_block_data_update_set(const stmdev_ctx_t *ctx, uint8_t val)
 {
-  lis2dw12_ctrl2_t reg;
-  int32_t ret;
+  lis2dw12_ctrl2_t reg;  /**< CTRL2寄存器结构体，用于配置BDU位 */
+  int32_t ret;           /**< 函数返回值，用于错误处理 */
 
+  /** 读取CTRL2寄存器的当前值到reg结构体 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL2, (uint8_t *) &reg, 1);
 
+  /** 如果读取成功，则配置BDU位 */
   if (ret == 0)
   {
+    /** 设置BDU位：0=禁用块数据更新，1=启用块数据更新 */
     reg.bdu = val;
+    /** 将配置写入CTRL2寄存器 */
     ret = lis2dw12_write_reg(ctx, LIS2DW12_CTRL2, (uint8_t *) &reg, 1);
   }
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Block data update.[get]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  val      change the values of bdu in reg CTRL2
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 获取块数据更新模式状态
+ *
+ * 该函数用于读取LIS2DW12加速度传感器的当前块数据更新(BDU)功能状态。
+ * 通过读取CTRL2寄存器的bdu位，可以了解当前是否启用了块数据更新功能。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param val 输出参数，用于存储当前BDU状态：0=禁用，1=启用
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 如果读取失败，val参数不会被修改
+ * @note BDU功能影响多字节数据读取的一致性
+ */
 int32_t lis2dw12_block_data_update_get(const stmdev_ctx_t *ctx,
                                        uint8_t *val)
 {
-  lis2dw12_ctrl2_t reg;
-  int32_t ret;
+  lis2dw12_ctrl2_t reg;  /**< CTRL2寄存器结构体，用于存储BDU位 */
+  int32_t ret;           /**< 函数返回值，用于错误处理 */
 
+  /** 读取CTRL2寄存器的当前值到reg结构体 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL2, (uint8_t *) &reg, 1);
+  /** 提取BDU位值：0=禁用块数据更新，1=启用块数据更新 */
   *val = reg.bdu;
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Accelerometer full-scale selection.[set]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  val      change the values of fs in reg CTRL6
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 设置加速度传感器满量程范围
+ *
+ * 该函数用于配置LIS2DW12加速度传感器的满量程范围(FS)。
+ * 满量程范围决定了传感器的测量范围和分辨率，影响转换系数。
+ * 支持的范围：±2g、±4g、±8g、±16g。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param val 满量程范围枚举值：LIS2DW12_2g、LIS2DW12_4g、LIS2DW12_8g、LIS2DW12_16g
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 该函数使用读-修改-写模式配置CTRL6寄存器的fs位
+ * @note 满量程范围影响数据转换系数，需要相应调整转换函数
+ * @note 较大的满量程范围提供更大的测量范围但降低分辨率
+ * @note 较小的满量程范围提供更高的分辨率但测量范围较小
+ */
 int32_t lis2dw12_full_scale_set(const stmdev_ctx_t *ctx, lis2dw12_fs_t val)
 {
-  lis2dw12_ctrl6_t reg;
-  int32_t ret;
+  lis2dw12_ctrl6_t reg;  /**< CTRL6寄存器结构体，用于配置满量程范围 */
+  int32_t ret;           /**< 函数返回值，用于错误处理 */
 
+  /** 读取CTRL6寄存器的当前值到reg结构体 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL6, (uint8_t *) &reg, 1);
 
+  /** 如果读取成功，则配置满量程范围 */
   if (ret == 0)
   {
+    /** 设置fs位：配置满量程范围值 */
     reg.fs = (uint8_t) val;
+    /** 将配置写入CTRL6寄存器 */
     ret = lis2dw12_write_reg(ctx, LIS2DW12_CTRL6, (uint8_t *) &reg, 1);
   }
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Accelerometer full-scale selection.[get]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  val      Get the values of fs in reg CTRL6
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 获取加速度传感器满量程范围
+ *
+ * 该函数用于读取LIS2DW12加速度传感器的当前满量程范围(FS)配置。
+ * 通过读取CTRL6寄存器的fs位，可以了解当前设置的测量范围。
+ * 返回的枚举值对应不同的满量程范围：±2g、±4g、±8g、±16g。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param val 输出参数，用于存储当前满量程范围枚举值
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 如果读取失败，val参数不会被修改
+ * @note 满量程范围决定了数据转换系数和测量精度
+ * @note 该函数通过switch语句将寄存器值映射到对应的枚举值
+ */
 int32_t lis2dw12_full_scale_get(const stmdev_ctx_t *ctx, lis2dw12_fs_t *val)
 {
-  lis2dw12_ctrl6_t reg;
-  int32_t ret;
+  lis2dw12_ctrl6_t reg;  /**< CTRL6寄存器结构体，用于存储fs位 */
+  int32_t ret;           /**< 函数返回值，用于错误处理 */
 
+  /** 读取CTRL6寄存器的当前值到reg结构体 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL6, (uint8_t *) &reg, 1);
 
+  /** 根据fs位的值确定当前满量程范围 */
   switch (reg.fs)
   {
+    /** ±2g满量程范围：最高分辨率，最小测量范围 */
     case LIS2DW12_2g:
       *val = LIS2DW12_2g;
       break;
 
+    /** ±4g满量程范围：中等分辨率，中等测量范围 */
     case LIS2DW12_4g:
       *val = LIS2DW12_4g;
       break;
 
+    /** ±8g满量程范围：较低分辨率，较大测量范围 */
     case LIS2DW12_8g:
       *val = LIS2DW12_8g;
       break;
 
+    /** ±16g满量程范围：最低分辨率，最大测量范围 */
     case LIS2DW12_16g:
       *val = LIS2DW12_16g;
       break;
 
+    /** 默认情况：如果fs位值不在预定义范围内，返回±2g范围 */
     default:
       *val = LIS2DW12_2g;
       break;
   }
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  The STATUS_REG register of the device.[get]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  val      union of registers from STATUS to
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 读取设备状态寄存器
+ *
+ * 该函数用于读取LIS2DW12加速度传感器的状态寄存器(STATUS)。
+ * 状态寄存器包含各种状态标志位，如数据就绪标志、数据覆盖标志等。
+ * 通过读取状态寄存器可以了解传感器的当前工作状态。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param val 输出参数，用于存储状态寄存器的内容，包含各种状态标志位
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 如果读取失败，val参数不会被修改
+ * @note 状态寄存器是只读寄存器，包含实时状态信息
+ * @note 该函数直接读取整个状态寄存器到val结构体中
+ */
 int32_t lis2dw12_status_reg_get(const stmdev_ctx_t *ctx,
                                 lis2dw12_status_t *val)
 {
-  int32_t ret;
+  int32_t ret;  /**< 函数返回值，用于错误处理 */
 
+  /** 读取STATUS寄存器的内容到val结构体 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_STATUS, (uint8_t *) val, 1);
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Accelerometer new data available.[get]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  val      change the values of drdy in reg STATUS
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 获取加速度传感器数据就绪标志
+ *
+ * 该函数用于检查LIS2DW12加速度传感器是否有新的数据可用。
+ * 通过读取状态寄存器的drdy位，可以判断传感器是否已经准备好新的加速度数据。
+ * 当drdy位为1时，表示有新的数据可以读取。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param val 输出参数，用于存储数据就绪标志：0=无新数据，1=有新数据
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 如果读取失败，val参数不会被修改
+ * @note 建议在读取加速度数据之前先检查此标志
+ * @note drdy标志在数据更新时自动置位，读取数据后自动清零
+ * @note 该函数专门用于检查数据就绪状态，比读取整个状态寄存器更高效
+ */
 int32_t lis2dw12_flag_data_ready_get(const stmdev_ctx_t *ctx, uint8_t *val)
 {
-  lis2dw12_status_t reg;
-  int32_t ret;
+  lis2dw12_status_t reg;  /**< 状态寄存器结构体，用于存储STATUS寄存器内容 */
+  int32_t ret;            /**< 函数返回值，用于错误处理 */
 
+  /** 读取STATUS寄存器的内容到reg结构体 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_STATUS, (uint8_t *) &reg, 1);
+  /** 提取drdy位：0=无新数据，1=有新数据 */
   *val = reg.drdy;
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 /**
-  * @brief   Read all the interrupt/status flag of the device.[get]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  val      registers STATUS_DUP, WAKE_UP_SRC,
-  *                  TAP_SRC, SIXD_SRC, ALL_INT_SRC
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 读取设备所有中断/状态标志
+ *
+ * 该函数用于一次性读取LIS2DW12加速度传感器的所有中断和状态标志。
+ * 函数会连续读取5个寄存器：STATUS_DUP、WAKE_UP_SRC、TAP_SRC、SIXD_SRC、ALL_INT_SRC。
+ * 这些寄存器包含各种中断源的状态信息，如唤醒中断、敲击检测、6D方向检测等。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param val 输出参数，用于存储所有中断/状态标志的联合体结构
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 如果读取失败，val参数不会被修改
+ * @note 该函数一次性读取5个字节，提高读取效率
+ * @note 读取的寄存器包括：状态重复、唤醒源、敲击源、6D源、所有中断源
+ * @note 建议在需要检查多种中断状态时使用此函数
+ */
 int32_t lis2dw12_all_sources_get(const stmdev_ctx_t *ctx,
                                  lis2dw12_all_sources_t *val)
 {
-  int32_t ret;
+  int32_t ret;  /**< 函数返回值，用于错误处理 */
 
+  /** 连续读取5个中断/状态寄存器到val联合体结构 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_STATUS_DUP, (uint8_t *) val, 5);
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Accelerometer X-axis user offset correction expressed in two's
-  *         complement, weight depends on bit USR_OFF_W. The value must be
-  *         in the range [-127 127].[set]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  buff     buffer that contains data to write
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 设置加速度传感器X轴用户偏移校正
+ *
+ * 该函数用于设置LIS2DW12加速度传感器X轴的用户偏移校正值。
+ * 偏移校正用于补偿传感器的零偏误差，提高测量精度。
+ * 偏移值以二进制补码形式表示，有效范围为[-127, 127]。
+ * 偏移值的权重取决于USR_OFF_W位的设置。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param buff 输入缓冲区，包含要写入的偏移校正值
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 偏移值范围：-127到+127
+ * @note 偏移值以二进制补码形式存储
+ * @note 偏移值的实际权重取决于USR_OFF_W位的配置
+ * @note 该函数直接写入X_OFS_USR寄存器
+ * @note 偏移校正会在数据输出时自动应用
+ */
 int32_t lis2dw12_usr_offset_x_set(const stmdev_ctx_t *ctx, uint8_t *buff)
 {
-  int32_t ret;
+  int32_t ret;  /**< 函数返回值，用于错误处理 */
 
+  /** 将偏移校正值写入X_OFS_USR寄存器 */
   ret = lis2dw12_write_reg(ctx, LIS2DW12_X_OFS_USR, buff, 1);
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Accelerometer X-axis user offset correction expressed in two's
-  *         complement, weight depends on bit USR_OFF_W. The value must be
-  *         in the range [-127 127].[get]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  buff     buffer that stores data read
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 获取加速度传感器X轴用户偏移校正
+ *
+ * 该函数用于读取LIS2DW12加速度传感器X轴的当前用户偏移校正值。
+ * 偏移校正值以二进制补码形式存储，有效范围为[-127, 127]。
+ * 通过读取当前偏移值，可以了解传感器的校正状态。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param buff 输出缓冲区，用于存储读取的偏移校正值
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 如果读取失败，buff参数不会被修改
+ * @note 偏移值以二进制补码形式存储
+ * @note 偏移值的实际权重取决于USR_OFF_W位的配置
+ * @note 该函数直接读取X_OFS_USR寄存器
+ * @note 读取的值是当前应用的偏移校正
+ */
 int32_t lis2dw12_usr_offset_x_get(const stmdev_ctx_t *ctx, uint8_t *buff)
 {
-  int32_t ret;
+  int32_t ret;  /**< 函数返回值，用于错误处理 */
 
+  /** 从X_OFS_USR寄存器读取偏移校正值 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_X_OFS_USR, buff, 1);
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Accelerometer Y-axis user offset correction expressed in two's
-  *         complement, weight depends on bit USR_OFF_W. The value must be
-  *         in the range [-127 127].[set]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  buff     buffer that contains data to write
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 设置加速度传感器Y轴用户偏移校正
+ *
+ * 该函数用于设置LIS2DW12加速度传感器Y轴的用户偏移校正值。
+ * 偏移校正用于补偿传感器的零偏误差，提高测量精度。
+ * 偏移值以二进制补码形式表示，有效范围为[-127, 127]。
+ * 偏移值的权重取决于USR_OFF_W位的设置。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param buff 输入缓冲区，包含要写入的偏移校正值
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 偏移值范围：-127到+127
+ * @note 偏移值以二进制补码形式存储
+ * @note 偏移值的实际权重取决于USR_OFF_W位的配置
+ * @note 该函数直接写入Y_OFS_USR寄存器
+ * @note 偏移校正会在数据输出时自动应用
+ */
 int32_t lis2dw12_usr_offset_y_set(const stmdev_ctx_t *ctx, uint8_t *buff)
 {
-  int32_t ret;
+  int32_t ret;  /**< 函数返回值，用于错误处理 */
 
+  /** 将偏移校正值写入Y_OFS_USR寄存器 */
   ret = lis2dw12_write_reg(ctx, LIS2DW12_Y_OFS_USR, buff, 1);
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Accelerometer Y-axis user offset correction expressed in two's
-  *         complement, weight depends on bit USR_OFF_W. The value must be
-  *         in the range [-127 127].[get]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  buff     buffer that stores data read
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 获取加速度传感器Y轴用户偏移校正
+ *
+ * 该函数用于读取LIS2DW12加速度传感器Y轴的当前用户偏移校正值。
+ * 偏移校正值以二进制补码形式存储，有效范围为[-127, 127]。
+ * 通过读取当前偏移值，可以了解传感器的校正状态。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param buff 输出缓冲区，用于存储读取的偏移校正值
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 如果读取失败，buff参数不会被修改
+ * @note 偏移值以二进制补码形式存储
+ * @note 偏移值的实际权重取决于USR_OFF_W位的配置
+ * @note 该函数直接读取Y_OFS_USR寄存器
+ * @note 读取的值是当前应用的偏移校正
+ */
 int32_t lis2dw12_usr_offset_y_get(const stmdev_ctx_t *ctx, uint8_t *buff)
 {
-  int32_t ret;
+  int32_t ret;  /**< 函数返回值，用于错误处理 */
 
+  /** 从Y_OFS_USR寄存器读取偏移校正值 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_Y_OFS_USR, buff, 1);
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Accelerometer Z-axis user offset correction expressed in two's
-  *         complement, weight depends on bit USR_OFF_W. The value must be
-  *         in the range [-127 127].[set]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  buff     buffer that contains data to write
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 设置加速度传感器Z轴用户偏移校正
+ *
+ * 该函数用于设置LIS2DW12加速度传感器Z轴的用户偏移校正值。
+ * 偏移校正用于补偿传感器的零偏误差，提高测量精度。
+ * 偏移值以二进制补码形式表示，有效范围为[-127, 127]。
+ * 偏移值的权重取决于USR_OFF_W位的设置。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param buff 输入缓冲区，包含要写入的偏移校正值
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 偏移值范围：-127到+127
+ * @note 偏移值以二进制补码形式存储
+ * @note 偏移值的实际权重取决于USR_OFF_W位的配置
+ * @note 该函数直接写入Z_OFS_USR寄存器
+ * @note 偏移校正会在数据输出时自动应用
+ */
 int32_t lis2dw12_usr_offset_z_set(const stmdev_ctx_t *ctx, uint8_t *buff)
 {
-  int32_t ret;
+  int32_t ret;  /**< 函数返回值，用于错误处理 */
 
+  /** 将偏移校正值写入Z_OFS_USR寄存器 */
   ret = lis2dw12_write_reg(ctx, LIS2DW12_Z_OFS_USR, buff, 1);
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Accelerometer Z-axis user offset correction expressed in two's
-  *         complement, weight depends on bit USR_OFF_W. The value must be
-  *         in the range [-127 127].[get]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  buff     buffer that stores data read
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 获取加速度传感器Z轴用户偏移校正
+ *
+ * 该函数用于读取LIS2DW12加速度传感器Z轴的当前用户偏移校正值。
+ * 偏移校正值以二进制补码形式存储，有效范围为[-127, 127]。
+ * 通过读取当前偏移值，可以了解传感器的校正状态。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param buff 输出缓冲区，用于存储读取的偏移校正值
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 如果读取失败，buff参数不会被修改
+ * @note 偏移值以二进制补码形式存储
+ * @note 偏移值的实际权重取决于USR_OFF_W位的配置
+ * @note 该函数直接读取Z_OFS_USR寄存器
+ * @note 读取的值是当前应用的偏移校正
+ */
 int32_t lis2dw12_usr_offset_z_get(const stmdev_ctx_t *ctx, uint8_t *buff)
 {
-  int32_t ret;
+  int32_t ret;  /**< 函数返回值，用于错误处理 */
 
+  /** 从Z_OFS_USR寄存器读取偏移校正值 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_Z_OFS_USR, buff, 1);
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
 /**
-  * @brief  Weight of XL user offset bits of registers X_OFS_USR,
-  *         Y_OFS_USR, Z_OFS_USR.[set]
-  *
-  * @param  ctx      read / write interface definitions
-  * @param  val      change the values of usr_off_w in
-  *                               reg CTRL_REG7
-  * @retval          interface status (MANDATORY: return 0 -> no Error)
-  *
-  */
+ * @brief 设置加速度传感器用户偏移权重
+ *
+ * 该函数用于设置LIS2DW12加速度传感器用户偏移校正的权重。
+ * 权重设置影响X_OFS_USR、Y_OFS_USR、Z_OFS_USR寄存器中偏移值的实际效果。
+ * 不同的权重设置提供不同的偏移校正精度和范围。
+ *
+ * @param ctx 读写接口定义结构体指针，包含设备句柄和读写函数指针
+ * @param val 偏移权重枚举值，决定偏移校正的精度和范围
+ * @retval 接口状态 (MANDATORY: 返回0表示无错误)
+ *
+ * @note 该函数使用读-修改-写模式配置CTRL_REG7寄存器的usr_off_w位
+ * @note 权重设置影响所有轴的偏移校正效果
+ * @note 不同的权重提供不同的偏移校正精度
+ * @note 权重设置应与偏移值配合使用以获得最佳校正效果
+ */
 int32_t lis2dw12_offset_weight_set(const stmdev_ctx_t *ctx,
                                    lis2dw12_usr_off_w_t val)
 {
-  lis2dw12_ctrl_reg7_t reg;
-  int32_t ret;
+  lis2dw12_ctrl_reg7_t reg;  /**< CTRL_REG7寄存器结构体，用于配置偏移权重 */
+  int32_t ret;               /**< 函数返回值，用于错误处理 */
 
+  /** 读取CTRL_REG7寄存器的当前值到reg结构体 */
   ret = lis2dw12_read_reg(ctx, LIS2DW12_CTRL_REG7, (uint8_t *) &reg, 1);
 
+  /** 如果读取成功，则配置偏移权重 */
   if (ret == 0)
   {
+    /** 设置usr_off_w位：配置偏移校正权重 */
     reg.usr_off_w = (uint8_t) val;
+    /** 将配置写入CTRL_REG7寄存器 */
     ret = lis2dw12_write_reg(ctx, LIS2DW12_CTRL_REG7, (uint8_t *) &reg, 1);
   }
 
+  /** 返回操作结果：0表示成功，非0表示错误 */
   return ret;
 }
 
